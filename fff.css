@@ -8690,3 +8690,16 @@ html[lang^=en-].theme-dark .toolbar__9293f .iconWrapper__9293f[aria-label="Keywo
 .theme-dark .vc-ranb-button.button__201d5 .contents__201d5:active {
   background-color: rgba(255, 255, 255, 0.0419);
 }
+
+/* Делаем прозрачным фон панели голосовой связи и стрима */
+.container_b2ce9b, 
+.activityPanel_a4b0d0, 
+.wrapper_adcaac {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Если нужно убрать темную плашку самого стрима (Screen 1) */
+.liveIndicator_b114fe, .container_dfb170 {
+    background-color: rgba(0, 0, 0, 0.3) !important; /* Делает её слегка черной прозрачной, либо замените на transparent */
+}
