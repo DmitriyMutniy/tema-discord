@@ -1006,9 +1006,12 @@ html.theme-dark.app-focused .clickable_c99c29::before {
   padding: 0;
 }
 
-.theme-dark .panels__5e434 {
-  background-color: #282828;
-  border-radius: 4px;
+.theme-dark .panels__5e434,
+.theme-dark .panels__5e434 > div,
+.theme-dark .panels__5e434 > section {
+    background-color: transparent !important;
+    background: transparent !important;
+    border-radius: 4px;
 }
 .theme-dark .panels__5e434 .container__37e49 {
   background-color: transparent;
@@ -8689,39 +8692,4 @@ html[lang^=en-].theme-dark .toolbar__9293f .iconWrapper__9293f[aria-label="Keywo
 }
 .theme-dark .vc-ranb-button.button__201d5 .contents__201d5:active {
   background-color: rgba(255, 255, 255, 0.0419);
-}
-
-/* =======================================================
-   РАДИКАЛЬНЫЙ МЕТОД ДЛЯ ПОЛНОЙ ПРОЗРАЧНОСТИ ПАНЕЛЕЙ
-   ======================================================= */
-
-/* Пробиваем внутренние переменные темы через обнуление видимости фонов */
-[class*="sidebar_"] [class*="panels_"],
-[class*="sidebar_"] [class*="panels_"] * {
-    --background-secondary-alt: transparent !important;
-    --background-floating: transparent !important;
-    --bg-overlay-3: transparent !important;
-    --bg-overlay-chat: transparent !important;
-}
-
-/* Принудительный сброс цвета через микширование слоев */
-div[class*="panels_"] {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Нацеливаемся напрямую на контейнер стрима и кнопок */
-div[class*="panels_"] > div, 
-div[class*="panels_"] > section {
-    background: transparent !important;
-    background-color: transparent !important;
-    mix-blend-mode: screen !important; /* Убирает темные подложки, оставляя только текст и иконки */
-}
-
-/* Убираем рамки и тени, которые могут имитировать серый фон */
-div[class*="panels_"] [class*="container_"],
-div[class*="panels_"] [class*="activityPanel_"] {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
 }
