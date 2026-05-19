@@ -8692,28 +8692,36 @@ html[lang^=en-].theme-dark .toolbar__9293f .iconWrapper__9293f[aria-label="Keywo
 }
 
 /* =======================================================
-   ПРИНУДИТЕЛЬНАЯ ПРОЗРАЧНОСТЬ НИЖНЕЙ ЛЕВОЙ ПАНЕЛИ DISCORD
+   РАДИКАЛЬНЫЙ МЕТОД ДЛЯ ПОЛНОЙ ПРОЗРАЧНОСТИ ПАНЕЛЕЙ
    ======================================================= */
 
-/* Делаем прозрачной саму панель (аккаунт, голос, стрим) */
-div[class*="sidebar_"] > nav + div[class*="panels_"],
-div[class*="panels_"] div[class*="container_"],
-div[class*="panels_"] section[class*="container_"],
-div[class*="activityPanel_"],
-div[class*="customPanel_"] {
+/* Пробиваем внутренние переменные темы через обнуление видимости фонов */
+[class*="sidebar_"] [class*="panels_"],
+[class*="sidebar_"] [class*="panels_"] * {
+    --background-secondary-alt: transparent !important;
+    --background-floating: transparent !important;
+    --bg-overlay-3: transparent !important;
+    --bg-overlay-chat: transparent !important;
+}
+
+/* Принудительный сброс цвета через микширование слоев */
+div[class*="panels_"] {
     background: transparent !important;
     background-color: transparent !important;
 }
 
-/* Убираем фон у кнопок управления (микрофон, наушники, шестеренка) */
-div[class*="panels_"] [class*="actionButtons_"] {
+/* Нацеливаемся напрямую на контейнер стрима и кнопок */
+div[class*="panels_"] > div, 
+div[class*="panels_"] > section {
     background: transparent !important;
     background-color: transparent !important;
+    mix-blend-mode: screen !important; /* Убирает темные подложки, оставляя только текст и иконки */
 }
 
-/* Убираем темный фон у блока трансляции экрана (Screen 1) */
-div[class*="panels_"] [class*="streamNotice_"],
-div[class*="panels_"] [class*="liveIndicator_"] {
+/* Убираем рамки и тени, которые могут имитировать серый фон */
+div[class*="panels_"] [class*="container_"],
+div[class*="panels_"] [class*="activityPanel_"] {
     background: transparent !important;
-    background-color: rgba(0, 0, 0, 0.2) !important; /* Легкое затемнение для читаемости текста, можно заменить на transparent */
+    border: none !important;
+    box-shadow: none !important;
 }
