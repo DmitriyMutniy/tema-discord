@@ -8691,18 +8691,29 @@ html[lang^=en-].theme-dark .toolbar__9293f .iconWrapper__9293f[aria-label="Keywo
   background-color: rgba(255, 255, 255, 0.0419);
 }
 
-/* Полная очистка фона всей панели голосовой связи, стрима и кнопок управления */
-[class*="container_"] > [class*="connection_"],
-[class*="container_"] [class*="actionButtons_"],
-[class*="activityPanel_"],
-[class*="panel_"] [class*="container_"] {
+/* =======================================================
+   ПРИНУДИТЕЛЬНАЯ ПРОЗРАЧНОСТЬ НИЖНЕЙ ЛЕВОЙ ПАНЕЛИ DISCORD
+   ======================================================= */
+
+/* Делаем прозрачной саму панель (аккаунт, голос, стрим) */
+div[class*="sidebar_"] > nav + div[class*="panels_"],
+div[class*="panels_"] div[class*="container_"],
+div[class*="panels_"] section[class*="container_"],
+div[class*="activityPanel_"],
+div[class*="customPanel_"] {
     background: transparent !important;
     background-color: transparent !important;
 }
 
-/* Убираем темную плашку самого стрима (Screen 1) */
-[class*="liveIndicator_"], 
-[class*="streamNotice_"], 
-[class*="container_dfb170"] {
-    background-color: rgba(0, 0, 0, 0.2) !important; /* Едва заметный темный фильтр, либо поставь transparent */
+/* Убираем фон у кнопок управления (микрофон, наушники, шестеренка) */
+div[class*="panels_"] [class*="actionButtons_"] {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Убираем темный фон у блока трансляции экрана (Screen 1) */
+div[class*="panels_"] [class*="streamNotice_"],
+div[class*="panels_"] [class*="liveIndicator_"] {
+    background: transparent !important;
+    background-color: rgba(0, 0, 0, 0.2) !important; /* Легкое затемнение для читаемости текста, можно заменить на transparent */
 }
